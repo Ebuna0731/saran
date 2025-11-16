@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Чамд хайртай 💖</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial Rounded MT Bold', 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(-45deg, #ff758c, #ff7eb3, #a18cd1, #fbc2eb, #8ec5fc);
+            background-size: 400% 400%;
+            animation: gradient 18s ease infinite;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 450px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.92);
+            border-radius: 30px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+            padding: 40px 35px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            transform: translateY(30px) scale(0.95);
+            opacity: 0;
+            animation: containerEntrance 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards 0.8s;
+        }
+
+        @keyframes containerEntrance {
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 70%);
+            z-index: -1;
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        h1 {
+            color: #e84393;
+            margin-bottom: 30px;
+            font-size: 36px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.15);
+            position: relative;
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: titleAnimation 1s forwards 1.5s;
+        }
+
+        @keyframes titleAnimation {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(to right, #ff9a9e, #fad0c4, #a18cd1);
+            border-radius: 4px;
+            animation: lineExtend 0.8s forwards 2s;
+        }
+
+        @keyframes lineExtend {
+            from { width: 0; }
+            to { width: 100px; }
+        }
+
+        .message-box {
+            background: linear-gradient(135deg, #ffeaa7, #ffd8a8);
+            padding: 30px 25px;
+            border-radius: 25px;
+            margin: 30px 0;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+            position: relative;
+            overflow: hidden;
+            transform: perspective(1000px) rotateX(5deg) translateY(20px);
+            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            opacity: 0;
+            animation: messageBoxEntrance 1s forwards 2s;
+        }
+
+        @keyframes messageBoxEntrance {
+            to {
+                opacity: 1;
+                transform: perspective(1000px) rotateX(0) translateY(0);
+            }
+        }
+
+        .message-box:hover {
+            transform: perspective(1000px) rotateX(5deg) translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.18);
+        }
+
+        .message-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(to right, #e84393, #fd79a8, #a18cd1);
+            animation: rainbowLine 3s linear infinite;
+        }
+
+        @keyframes rainbowLine {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        p {
+            color: #2d3436;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-size: 20px;
+            position: relative;
+            z-index: 1;
+            opacity: 0;
+            transform: translateX(-20px);
+            animation: textSlideIn 0.8s forwards;
+        }
+
+        p:nth-child(1) { animation-delay: 2.3s; }
+        p:nth-child(2) { animation-delay: 2.6s; }
+        p:nth-child(3) { animation-delay: 2.9s; }
+        p:nth-child(4) { animation-delay: 3.2s; }
+
+        @keyframes textSlideIn {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .highlight {
+            color: #e84393;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+            position: relative;
+            display: inline-block;
+        }
+
+        .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: rgba(232, 67, 147, 0.3);
+            transform: scaleX(0);
+            transform-origin: left;
+            animation: highlightUnderline 0.5s forwards 3.5s;
+        }
+
+        @keyframes highlightUnderline {
+            to { transform: scaleX(1); }
+        }
+
+        .love-btn {
+            background: linear-gradient(135deg, #e84393, #fd79a8);
+            color: white;
+            border: none;
+            padding: 18px 45px;
+            border-radius: 50px;
+            font-size: 22px;
+            cursor: pointer;
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            box-shadow: 0 12px 25px rgba(232, 67, 147, 0.4);
+            margin-top: 20px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: buttonEntrance 0.8s forwards 3s;
+        }
+
+        @keyframes buttonEntrance {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .love-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: 0.6s;
+            z-index: -1;
+        }
+
+        .love-btn:hover {
+            transform: translateY(-8px) scale(1.08);
+            box-shadow: 0 18px 35px rgba(232, 67, 147, 0.5);
+            background: linear-gradient(135deg, #fd79a8, #e84393);
+        }
+
+        .love-btn:hover::before {
+            left: 100%;
+        }
+
+        .floating-hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .floating-heart {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: #ff6b6b;
+            transform: rotate(45deg);
+            opacity: 0;
+            filter: drop-shadow(0 0 12px rgba(255, 107, 107, 0.7));
+            animation: floatUp 6s ease-in-out infinite;
+        }
+
+        .floating-heart:before, .floating-heart:after {
+            content: '';
+            width: 30px;
+            height: 30px;
+            background: inherit;
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        .floating-heart:before {
+            top: -15px;
+            left: 0;
+        }
+
+        .floating-heart:after {
+            top: 0;
+            left: -15px;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) rotate(45deg) scale(0);
+                opacity: 0;
+            }
+            20% {
+                opacity: 1;
+                transform: translateY(80vh) rotate(45deg) scale(1);
+            }
+            80% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-100px) rotate(45deg) scale(0.5);
+                opacity: 0;
+            }
+        }
+
+        .heart-pulse {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            font-size: 32px;
+            color: #ff6b6b;
+            animation: heartbeat 1.8s ease-in-out infinite both;
+            filter: drop-shadow(0 0 10px rgba(255, 107, 107, 0.5));
+        }
+
+        .photo-frame {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            margin: 0 auto 25px;
+            overflow: hidden;
+            border: 6px solid #ffeaa7;
+            box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+            position: relative;
+            background: #f8f9fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transform: scale(0.8);
+            animation: photoFrameEntrance 1s forwards 1.8s;
+        }
+
+        @keyframes photoFrameEntrance {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .photo-placeholder {
+            font-size: 60px;
+            color: #e84393;
+            animation: photoPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes photoPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .memory-text {
+            font-style: italic;
+            color: #636e72;
+            margin-top: 15px;
+            font-size: 17px;
+            opacity: 0;
+            animation: fadeIn 1s forwards 3.5s;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            15% { transform: scale(1.2); }
+            30% { transform: scale(1); }
+            45% { transform: scale(1.1); }
+            60% { transform: scale(1); }
+            100% { transform: scale(1); }
+        }
+
+        .special-message {
+            display: none;
+            margin-top: 30px;
+            padding: 25px;
+            background: rgba(232, 67, 147, 0.12);
+            border-radius: 20px;
+            border-left: 6px solid #e84393;
+            animation: specialMessageEntrance 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+            position: relative;
+            overflow: hidden;
+        }
+
+        @keyframes specialMessageEntrance {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .special-message::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.3) 50%, transparent 70%);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .special-message p {
+            color: #e84393;
+            font-weight: bold;
+            font-size: 18px;
+            animation: none;
+            opacity: 1;
+            transform: none;
+        }
+
+        .floating-text {
+            position: absolute;
+            font-size: 16px;
+            color: #e84393;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 10;
+            font-weight: bold;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: white;
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0;
+            filter: drop-shadow(0 0 6px gold);
+        }
+
+        .confetti {
+            position: fixed;
+            width: 15px;
+            height: 15px;
+            opacity: 0;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="heart-pulse">💖</div>
+        <div class="floating-hearts" id="floatingHearts"></div>
+        
+        <div class="photo-frame">
+            <div class="photo-placeholder">
+                <i class="fas fa-heart"></i>
+            </div>
+        </div>
+        
+        <h1>hamgiin huurhun hund ❤️</h1>
+        
+        <div class="message-box">
+            <p>Chi minii amidarliin  <span class="highlight">gerel gegee </span> baisan yum shuu 💫</p>
+            <p> <span class="highlight">hool undaa</span> sain iden shuu belen yum avj idhee bagsgaarai</p>
+            <p>daarj bolohgui shuu <span class="highlight">dulaahan huvtslaad </span> yvj baina shu zayu💕</p>
+            <p class="memory-text">"Анх уулзсан бүх мөчүүдээ бодож дурсаж хийлээ"</p>
+        </div>
+        
+        <button class="love-btn" id="loveBtn">
+            <i class="fas fa-heart"></i> ene deer dar 
+        </button>
+        
+        <div class="special-message" id="specialMessage">
+            <p>💌 миний амьдралд гарж ирсэнд Баярлалаа хамгийн сүүлийн удаа үнсье💖</p>
+        </div>
+    </div>
+
+    <script>
+        // Хүслийн товч дарахад зүрхний анимейшн
+        document.getElementById('loveBtn').addEventListener('click', function() {
+            createHearts();
+            createFloatingText();
+            createSparkles();
+            createConfetti();
+            
+            this.innerHTML = '<i class="fas fa-heart"></i> Тийм ээ, би чамайг маш их хайрладаг! 💕';
+            this.style.animation = "heartbeat 1.5s";
+            
+            // Онцгой мессежийг харуулах
+            document.getElementById('specialMessage').style.display = 'block';
+            
+            setTimeout(() => {
+                this.style.animation = "";
+            }, 1500);
+        });
+
+        // Зүрх сарнуу үүсгэх функц
+        function createHearts() {
+            const container = document.getElementById('floatingHearts');
+            
+            for (let i = 0; i < 35; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.classList.add('floating-heart');
+                    
+                    // Санамсаргүй байрлал
+                    const leftPos = Math.random() * 100;
+                    heart.style.left = `${leftPos}%`;
+                    
+                    // Санамсаргүй хэмжээ
+                    const size = Math.random() * 20 + 20;
+                    heart.style.width = `${size}px`;
+                    heart.style.height = `${size}px`;
+                    
+                    // Санамсаргүй өнгө
+                    const colors = ['#ff6b6b', '#e84393', '#fd79a8', '#ff9ff3', '#a29bfe'];
+                    const randomColor = colors[Math.floor(Math.random() * colors.length)];
+                    heart.style.background = randomColor;
+                    
+                    // Санамсаргүй анимейшн хугацаа
+                    const duration = Math.random() * 4 + 4;
+                    heart.style.animationDuration = `${duration}s`;
+                    
+                    // Санамсаргүй хурд
+                    const delay = Math.random() * 5;
+                    heart.style.animationDelay = `${delay}s`;
+                    
+                    container.appendChild(heart);
+                    
+                    // Анимейшн дууссаны дараа устгах
+                    setTimeout(() => {
+                        if (heart.parentNode) {
+                            heart.remove();
+                        }
+                    }, (duration + delay) * 1000);
+                }, i * 120);
+            }
+        }
+
+        // Хөвөх текст үүсгэх
+        function createFloatingText() {
+            const messages = ["ХАЙРТАЙ", "❤️", "МИНИЙ ХАЙРТ", "ЧАМД ХАЙРТАЙ", "LOVE YOU", "💕", "I LOVE YOU", "ТАНЫГ ХАЙРЛАНА"];
+            const container = document.querySelector('.container');
+            
+            for (let i = 0; i < 15; i++) {
+                setTimeout(() => {
+                    const text = document.createElement('div');
+                    text.classList.add('floating-text');
+                    text.textContent = messages[Math.floor(Math.random() * messages.length)];
+                    
+                    // Санамсаргүй байрлал
+                    const leftPos = Math.random() * 80 + 10;
+                    text.style.left = `${leftPos}%`;
+                    text.style.bottom = '0';
+                    
+                    // Санамсаргүй өнгө
+                    const colors = ['#e84393', '#ff6b6b', '#fd79a8', '#a29bfe', '#74b9ff'];
+                    text.style.color = colors[Math.floor(Math.random() * colors.length)];
+                    
+                    // Санамсаргүй хэмжээ
+                    const fontSize = Math.random() * 10 + 14;
+                    text.style.fontSize = `${fontSize}px`;
+                    
+                    container.appendChild(text);
+                    
+                    // Хөвөх анимейшн
+                    const duration = Math.random() * 4 + 3;
+                    text.style.transition = `all ${duration}s cubic-bezier(0.25, 0.46, 0.45, 0.94)`;
+                    text.style.opacity = '1';
+                    text.style.transform = `translateY(-${Math.random() * 150 + 150}px) rotate(${Math.random() * 25 - 12.5}deg) scale(${Math.random() * 0.5 + 0.8})`;
+                    
+                    // Анимейшн дууссаны дараа устгах
+                    setTimeout(() => {
+                        if (text.parentNode) {
+                            text.remove();
+                        }
+                    }, duration * 1000);
+                }, i * 180);
+            }
+        }
+
+        // Гялтганасан үүсгэх
+        function createSparkles() {
+            const container = document.querySelector('.container');
+            
+            for (let i = 0; i < 40; i++) {
+                setTimeout(() => {
+                    const sparkle = document.createElement('div');
+                    sparkle.classList.add('sparkle');
+                    
+                    // Санамсаргүй байрлал
+                    const leftPos = Math.random() * 100;
+                    const topPos = Math.random() * 100;
+                    sparkle.style.left = `${leftPos}%`;
+                    sparkle.style.top = `${topPos}%`;
+                    
+                    // Санамсаргүй хэмжээ
+                    const size = Math.random() * 6 + 4;
+                    sparkle.style.width = `${size}px`;
+                    sparkle.style.height = `${size}px`;
+                    
+                    container.appendChild(sparkle);
+                    
+                    // Гялтганасан анимейшн
+                    sparkle.style.animation = `sparkleTwinkle ${Math.random() * 1 + 0.5}s ease-in-out ${Math.random() * 0.5}s both`;
+                    
+                    // Анимейшн дууссаны дараа устгах
+                    setTimeout(() => {
+                        if (sparkle.parentNode) {
+                            sparkle.remove();
+                        }
+                    }, 2000);
+                }, i * 50);
+            }
+            
+            // Гялтганасан анимейшн нэмэх
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes sparkleTwinkle {
+                    0% { opacity: 0; transform: scale(0) rotate(0deg); }
+                    50% { opacity: 1; transform: scale(1) rotate(180deg); }
+                    100% { opacity: 0; transform: scale(0) rotate(360deg); }
+                }
+            `;
+            document.head.appendChild(style);
+        }
+
+        // Конфетти анимейшн
+        function createConfetti() {
+            const colors = ['#e84393', '#fd79a8', '#a29bfe', '#74b9ff', '#ffeaa7', '#55efc4'];
+            
+            for (let i = 0; i < 60; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.classList.add('confetti');
+                    
+                    // Санамсаргүй хэлбэр
+                    const shapes = ['rect', 'circle'];
+                    const shape = shapes[Math.floor(Math.random() * shapes.length)];
+                    
+                    if (shape === 'rect') {
+                        confetti.style.width = `${Math.random() * 15 + 5}px`;
+                        confetti.style.height = `${Math.random() * 8 + 3}px`;
+                        confetti.style.borderRadius = '2px';
+                    } else {
+                        confetti.style.width = `${Math.random() * 12 + 4}px`;
+                        confetti.style.height = confetti.style.width;
+                        confetti.style.borderRadius = '50%';
+                    }
+                    
+                    // Санамсаргүй өнгө
+                    confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    
+                    // Санамсаргүй эхлэх байрлал
+                    confetti.style.left = `${Math.random() * 100}vw`;
+                    confetti.style.top = '-20px';
+                    
+                    document.body.appendChild(confetti);
+                    
+                    // Конфетти анимейшн
+                    const animationDuration = Math.random() * 3 + 2;
+                    const animationDelay = Math.random() * 1;
+                    const rotation = Math.random() * 720 - 360;
+                    
+                    confetti.style.animation = `
+                        confettiFall ${animationDuration}s ease-in ${animationDelay}s forwards,
+                        confettiRotate ${animationDuration}s linear ${animationDelay}s infinite
+                    `;
+                    
+                    // Анимейшн дууссаны дараа устгах
+                    setTimeout(() => {
+                        if (confetti.parentNode) {
+                            confetti.remove();
+                        }
+                    }, (animationDuration + animationDelay) * 1000);
+                }, i * 50);
+            }
+            
+            // Конфетти анимейшн нэмэх
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes confettiFall {
+                    0% {
+                        transform: translateY(0) rotate(0deg);
+                        opacity: 1;
+                    }
+                    100% {
+                        transform: translateY(100vh) rotate(${Math.random() * 360}deg);
+                        opacity: 0;
+                    }
+                }
+                
+                @keyframes confettiRotate {
+                    0% { transform: rotate(0deg); }
+                    100% { transform: rotate(${Math.random() > 0.5 ? 360 : -360}deg); }
+                }
+            `;
+            document.head.appendChild(style);
+        }
+
+        // Эхлэх үед цөөн хэдэн зүрх сарнуу харуулах
+        window.onload = function() {
+            setTimeout(() => {
+                createHearts();
+            }, 1000);
+            
+            // Үе үе зүрх сарнуу үүсгэх
+            setInterval(() => {
+                if (Math.random() > 0.6) {
+                    createHearts();
+                }
+            }, 6000);
+        };
+    </script>
+</body>
+</html>
